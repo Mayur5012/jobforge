@@ -1,0 +1,11 @@
+export { default as Header } from './Header';
+export { default as HeroSection } from './HeroSection';
+export { default as FiltersSidebar } from './FiltersSidebar';
+export { default as JobList } from './JobList';
+export { default as Footer } from './Footer';
+export { default as HomeHighlights } from './HomeHighlights';
+export { default as PopularCategories } from './PopularCategories';
+export { default as BlogShowcase } from './BlogShowcase';
+export { default as TestimonialCarousel } from './TestimonialCarousel';
+export { default as WantToHire } from './WantToHire';
+export { default as FAQSection } from './FAQSection'; 
