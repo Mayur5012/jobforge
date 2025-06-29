@@ -14,9 +14,9 @@ import {
 } from '../components';
 
 const HomePage = () => {
-  return (
-    <div className="min-h-screen bg-gray-50">
+  return (<>
       <Header />
+    <div className="min-h-screen bg-gray-50 px-4 sm:px-6 md:px-8 lg:px-12">
       <HeroSection />
       <HomeHighlights />
       <PopularCategories />
@@ -32,8 +32,9 @@ const HomePage = () => {
         </div>
       </div> */}
       
-      <Footer />
     </div>
+      <Footer />
+    </>
   );
 };
 

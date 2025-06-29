@@ -3,7 +3,7 @@ import { ChevronRight, ChevronLeft, Star } from 'lucide-react';
 
 const trendingJobs = [
   'Delivery Boy', 'Ground Staff', 'Security Guard', 'Retail Manager', 'Warehouse Helpers', 'Delivery Driver',
-  'Ground Staff', 'Security Guard', 'Spot Boy', 'Retail Manager', 'Delivery Driver', 'Delivery Boy', 'Warehouse Helpers'
+  'Ground Staff', 'Security Guard', 'Spot Boy', 'Retail Manager', 'Delivery Driver'
 ];
 
 const companies = [
@@ -96,7 +96,7 @@ const HomeHighlights = () => {
         {trendingJobs.map((job, idx) => (
           <button
             key={idx}
-            className="border border-blue-400 text-blue-600 bg-white rounded-full px-6 py-2 text-base font-medium hover:bg-blue-50 transition-all"
+            className="border border-blue-400 text-blue-600 bg-white rounded-full px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 text-xs sm:text-sm md:text-base font-medium hover:bg-blue-50 transition-all"
           >
             {job}
           </button>
@@ -116,11 +116,11 @@ const HomeHighlights = () => {
         </div>
       </div>
       <div className="flex justify-center">
-        <div className="flex flex-nowrap gap-6 mb-8 transition-transform duration-500 ease-in-out">
+        <div className="flex flex-nowrap gap-6 mb-8 transition-transform duration-500 ease-in-out w-full overflow-x-auto sm:overflow-visible">
           {visibleCompanies.map((company, idx) => (
             <div
               key={company.name}
-              className="flex flex-col items-center bg-white border border-blue-100 rounded-2xl p-8 w-64 min-w-[220px] shadow-sm hover:shadow-md transition-shadow"
+              className="flex flex-col items-center bg-white border border-blue-100 rounded-2xl p-8 w-full min-w-0 sm:w-64 sm:min-w-[220px] shadow-sm hover:shadow-md transition-shadow"
             >
               <img src={company.logo} alt={company.name} className="h-12 object-contain mb-6" />
               <div className="flex items-center text-gray-500 text-sm mb-4">
