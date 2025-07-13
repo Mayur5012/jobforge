@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, LifeBuoy } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,17 +17,19 @@ const Header = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="flex-shrink-0">
-              <h1 className="text-xl font-bold text-red-600">/JOBFORGE</h1>
+              <Link to="/">
+                <h1 className="text-xl font-bold text-red-600 cursor-pointer">/JOBFORGE</h1>
+              </Link>
             </div>
           </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4 bg-white/70 rounded-3xl px-6 py-2 shadow-sm backdrop-blur-sm">
-              <a href="#jobs" className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors">Jobs</a>
-              <a href="#blog" className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors">Blog</a>
-              <a href="#contact" className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact Us</a>
-              <a href="#faqs" className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors">FAQs</a>
+              <Link to="/jobs" className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors">Jobs</Link>
+              <Link to="/blogs" className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors">Blog</Link>
+              <Link to="/contact" className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact Us</Link>
+              <Link to="/pricing" className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors">Pricing</Link>
             </div>
           </div>
 
@@ -36,7 +39,7 @@ const Header = () => {
                 <LifeBuoy className="h-4 w-4 mr-2" />
                 Support
               </a>
-              <button className="bg-transparent border border-black text-gray-900 px-4 py-2 rounded-2xl text-sm font-medium hover:bg-gray-100 transition-colors">Login/Sign Up</button>
+              <Link to="/login" className="bg-transparent border border-black text-gray-900 px-4 py-2 rounded-2xl text-sm font-medium hover:bg-gray-100 transition-colors">Login/Sign Up</Link>
             </div>
           </div>
 
@@ -60,12 +63,12 @@ const Header = () => {
             exit={{ opacity: 0, height: 0 }}
           >
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
-              <a href="#jobs" className="text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Jobs</a>
+              <Link to="/jobs" className="text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Jobs</Link>
               <a href="#blog" className="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
               <a href="#contact" className="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">Contact Us</a>
-              <a href="#faqs" className="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">FAQs</a>
+              <Link to="/pricing" className="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">Pricing</Link>
               <a href="#support" className="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">Support</a>
-              <button className="bg-blue-600 text-white w-full mt-4 px-4 py-2 rounded-md text-base font-medium hover:bg-blue-700">Login/Sign Up</button>
+              <Link to="/login" className="bg-blue-600 text-white w-full mt-4 px-4 py-2 rounded-md text-base font-medium hover:bg-blue-700 text-center block">Login/Sign Up</Link>
             </div>
           </motion.div>
         )}

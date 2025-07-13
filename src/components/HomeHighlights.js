@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronRight, ChevronLeft, Star } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const trendingJobs = [
   'Delivery Boy', 'Ground Staff', 'Security Guard', 'Retail Manager', 'Warehouse Helpers', 'Delivery Driver',
@@ -62,18 +63,42 @@ const HomeHighlights = () => {
 
   // Responsive: determine how many cards to show based on screen width
   const [cardsToShow, setCardsToShow] = useState(4);
+  const [isMobile, setIsMobile] = useState(false);
+  const [mobileJobsToShow, setMobileJobsToShow] = useState(4);
 
   React.useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 640) setCardsToShow(1);
-      else if (window.innerWidth < 1024) setCardsToShow(2);
-      else if (window.innerWidth < 1280) setCardsToShow(3);
-      else setCardsToShow(4);
+      if (window.innerWidth < 640) {
+        setCardsToShow(1);
+        setIsMobile(true);
+      } else if (window.innerWidth < 1024) {
+        setCardsToShow(2);
+        setIsMobile(false);
+      } else if (window.innerWidth < 1280) {
+        setCardsToShow(3);
+        setIsMobile(false);
+      } else {
+        setCardsToShow(4);
+        setIsMobile(false);
+      }
     };
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // Automate carousel to move right every 0.5s
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setStartIdx((prev) => (prev + 1 >= companies.length ? 0 : prev + 1));
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  React.useEffect(() => {
+    // Reset shown jobs when switching to mobile
+    if (isMobile) setMobileJobsToShow(4);
+  }, [isMobile]);
 
   const handlePrev = () => {
     setStartIdx((prev) => (prev - 1 < 0 ? companies.length - 1 : prev - 1));
@@ -88,32 +113,53 @@ const HomeHighlights = () => {
     visibleCompanies.push(companies[(startIdx + i) % companies.length]);
   }
 
+  // Trending jobs logic for mobile
+  const jobsToRender = isMobile ? trendingJobs.slice(0, mobileJobsToShow) : trendingJobs;
+  const canShowMore = isMobile && mobileJobsToShow < trendingJobs.length;
+  const canShowLess = isMobile && mobileJobsToShow >= trendingJobs.length && trendingJobs.length > 4;
+
   return (
     <section className="w-full my-12 px-2 md:px-8">
       {/* Trending Jobs */}
       <div className="flex flex-wrap items-center gap-3 mb-12">
         <span className="font-semibold text-lg text-gray-800">Trending Jobs &gt;</span>
-        {trendingJobs.map((job, idx) => (
-          <button
-            key={idx}
-            className="border border-blue-400 text-blue-600 bg-white rounded-full px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 text-xs sm:text-sm md:text-base font-medium hover:bg-blue-50 transition-all"
+        <AnimatePresence initial={false}>
+          {jobsToRender.map((job, idx) => (
+            <motion.button
+              key={idx}
+              className="border border-blue-400 text-blue-600 bg-white rounded-full px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 text-xs sm:text-sm md:text-base font-medium hover:bg-blue-50 transition-all"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+              layout
+            >
+              {job}
+            </motion.button>
+          ))}
+        </AnimatePresence>
+        {canShowMore && (
+          <span
+            className="ml-2 text-blue-600 text-xs sm:text-sm md:text-base font-medium underline cursor-pointer select-none hover:text-blue-800 transition-colors"
+            onClick={() => setMobileJobsToShow(mobileJobsToShow + 4)}
           >
-            {job}
-          </button>
-        ))}
+            Show more
+          </span>
+        )}
+        {canShowLess && (
+          <span
+            className="ml-2 text-blue-600 text-xs sm:text-sm md:text-base font-medium underline cursor-pointer select-none hover:text-blue-800 transition-colors"
+            onClick={() => setMobileJobsToShow(4)}
+          >
+            Show less
+          </span>
+        )}
       </div>
 
       {/* Who is hiring */}
       <div className="flex items-center justify-between mt-8 mb-8">
         <h2 className="text-2xl font-bold text-gray-900">Who is hiring at JobForge?</h2>
-        <div className="flex gap-2">
-          <button onClick={handlePrev} className="border border-blue-400 rounded-full p-2 text-blue-600 hover:bg-blue-50 transition-all">
-            <ChevronLeft />
-          </button>
-          <button onClick={handleNext} className="border border-blue-400 rounded-full p-2 text-blue-600 hover:bg-blue-50 transition-all">
-            <ChevronRight />
-          </button>
-        </div>
+        {/* Carousel is now automated, no manual controls */}
       </div>
       <div className="flex justify-center">
         <div className="flex flex-nowrap gap-6 mb-8 transition-transform duration-500 ease-in-out w-full overflow-x-auto sm:overflow-visible">
