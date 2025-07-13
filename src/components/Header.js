@@ -64,10 +64,10 @@ const Header = () => {
           >
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
               <Link to="/jobs" className="text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Jobs</Link>
-              <a href="#blog" className="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
-              <a href="#contact" className="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">Contact Us</a>
+              <Link to="/blogs" className="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">Blog</Link>
+              <Link to="/contact" className="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">Contact Us</Link>
               <Link to="/pricing" className="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">Pricing</Link>
-              <a href="#support" className="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">Support</a>
+              <Link to="/support" className="text-gray-500 block px-3 py-2 rounded-md text-base font-medium">Support</Link>
               <Link to="/login" className="bg-blue-600 text-white w-full mt-4 px-4 py-2 rounded-md text-base font-medium hover:bg-blue-700 text-center block">Login/Sign Up</Link>
             </div>
           </motion.div>

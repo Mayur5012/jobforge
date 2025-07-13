@@ -19,13 +19,13 @@ const JobsPage = () => {
             <main className="flex-1 min-w-0">
               {/* Responsive header row for results, filter, and sort */}
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6 gap-4">
-                <div className="flex flex-row items-center w-full gap-2 lg:gap-4 justify-between">
-                  {/* Results number left */}
-                  <div className="text-lg font-medium text-gray-700 whitespace-nowrap">
+                <div className="flex flex-col lg:flex-row w-full gap-2 lg:gap-4 justify-between">
+                  {/* Results number left, always on top/left */}
+                  <div className="text-lg font-medium text-gray-700 whitespace-nowrap mb-2 lg:mb-0">
                     <span className="font-semibold text-xl text-gray-900">1452</span> results found
                   </div>
-                  {/* Filter and sort right (row) */}
-                  <div className="flex flex-row items-center gap-2">
+                  {/* Filter and sort: row on all screens, justify-between on small */}
+                  <div className="flex flex-row items-center justify-between gap-2 w-full lg:w-auto">
                     {/* Filter button: only below lg */}
                     <button
                       className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg shadow-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 lg:hidden"
