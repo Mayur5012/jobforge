@@ -38,16 +38,16 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-black bg-opacity-50 z-0" />
         <div className="relative z-10 px-2 sm:px-6 md:px-8 py-10 sm:py-14 md:py-20">
           <div className="text-center">
-            <motion.p 
+            {/* <motion.p 
               className="text-yellow-400 text-sm mb-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               ⚡ Upload your CV - let employer find you
-            </motion.p>
+            </motion.p> */}
             <motion.h1 
-              className="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 sm:mb-8 text-white"
+              className="text-xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-8 text-white"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -60,10 +60,10 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              Search among 49,200+ active jobs on the Middle East's #1 job site
+              Search on the top job site in the Middle East
             </motion.p>
             {/* Responsive Search Bar/Button */}
-            <motion.div className="max-w-5xl mx-auto mb-4">
+            <motion.div className="max-w-5xl mx-auto mb-1">
               {/* Mobile/Tablet: Show button instead of search bar */}
               <div className="block sm:hidden">
                 <button

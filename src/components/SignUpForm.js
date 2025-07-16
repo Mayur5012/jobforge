@@ -43,7 +43,7 @@ const SignUpForm = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#172554] bg-[url('/src/assets/banner.png')] bg-cover bg-center">
-      <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md flex flex-col gap-6">
+      <div className="bg-white mx-4 sm:mx-6 my-6 rounded-2xl shadow-lg p-8 w-full max-w-md flex flex-col gap-6">
         <div className="flex flex-col gap-1">
           <span className="text-lg mb-4 font-bold tracking-widest text-[#E11D48]">/ JOBFORGE</span>
           <h2 className="text-2xl font-semibold">Sign Up</h2>
